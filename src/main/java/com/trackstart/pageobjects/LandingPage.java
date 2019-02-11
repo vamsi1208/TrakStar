@@ -1,14 +1,11 @@
 package com.trackstart.pageobjects;
 
-import static org.testng.Assert.assertEquals;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.trackstart.utilityclasses.Excel_Reader;
 
-import junit.framework.Assert;
-
+import static org.testng.Assert.assertEquals;
 public class LandingPage {
 
 	WebDriver driver;
@@ -37,6 +34,8 @@ public class LandingPage {
 
 		for (int i = 1; i <= 4; i++) {
 			driver.get("https://www.trakstar.com/pricing/");
+			
+			//this is a coment
 
 			try {
 				String noOfEmployeesValue = Excel_Reader.getCellData(".\\src\\test\\resources\\TestData\\Prices.xlsx",
@@ -95,18 +94,16 @@ public class LandingPage {
 					if (performanceManagementFeature.equalsIgnoreCase("yes")) {
 						boolean result = driver.findElement(performanceManagementQuote).getText()
 								.equalsIgnoreCase("$" + performanceManagementExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + performanceManagementExpectedValue
-								+ " but actual is " + driver.findElement(performanceManagementQuote).getText(), result);
+						
+						System.out.println("result"+result);
+						
+						assertEquals(result, true);
 					}
 					if (successionPlanningFeature.equalsIgnoreCase("yes")) {
 						
 						boolean result = driver.findElement(successionPlanningQuote).getText()
 								.equalsIgnoreCase("$" + successionPlanningExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + successionPlanningExpectedValue
-								+ " but actual is " + driver.findElement(successionPlanningQuote).getText(), result);
-					}
+						assertEquals(result, true);}
 					if (employeeEngagementExpectedValue.equalsIgnoreCase("yes")) {
 						//Thread.sleep(5000);
 						//driver.findElement(employeeEngagementChkBox).click();
@@ -114,118 +111,73 @@ public class LandingPage {
 						boolean result = driver.findElement(employeeEngagement).getText()
 								.equalsIgnoreCase("$" + employeeEngagementExpectedValue);
 
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + employeeEngagementExpectedValue
-								+ " but actual is " + driver.findElement(employeeEngagement).getText(), result);
-					}
-					if (applicantTrackingExpectedValue.equalsIgnoreCase("yes")) {
-						//driver.findElement(applicationTrackingChkBox).click();
-						boolean result = driver.findElement(applicantTracking).getText()
-								.equalsIgnoreCase("$" + applicantTrackingExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + applicantTrackingExpectedValue
-								+ " but actual is " + driver.findElement(applicantTracking).getText()
-										.equalsIgnoreCase("$" + applicantTrackingExpectedValue),
-								result);
-					}
-					if (annualSubscriptionExpectedValue.equalsIgnoreCase("yes")) {
-						boolean result = driver.findElement(annualSubscription).getText()
-								.equalsIgnoreCase("$" + annualSubscriptionExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + annualSubscriptionExpectedValue
-								+ " but actual is " + driver.findElement(annualSubscription).getText()
-										.equalsIgnoreCase("$" + annualSubscriptionExpectedValue),
-								result);
-					}
-				} else if (noOfEmployeesValue.equalsIgnoreCase("100")) {
-					if (performanceManagementFeature.equalsIgnoreCase("yes")) {
-						boolean result = driver.findElement(performanceManagementQuote).getText()
-								.equalsIgnoreCase("$" + performanceManagementExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + performanceManagementExpectedValue
-								+ " but actual is " + driver.findElement(performanceManagementQuote).getText(), result);
-					}
-					if (successionPlanningFeature.equalsIgnoreCase("yes")) {
-						boolean result = driver.findElement(successionPlanningQuote).getText()
-								.equalsIgnoreCase("$" + successionPlanningExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + successionPlanningExpectedValue
-								+ " but actual is " + driver.findElement(successionPlanningQuote).getText(), result);
-					}
-					if (employeeEngagementExpectedValue.equalsIgnoreCase("yes")) {
-						driver.findElement(employeeEngagementChkBox).click();
-						boolean result = driver.findElement(employeeEngagement).getText()
-								.equalsIgnoreCase("$" + employeeEngagementExpectedValue);
-
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + employeeEngagementExpectedValue
-								+ " but actual is " + driver.findElement(employeeEngagement).getText(), result);
-					}
+						assertEquals(result, true);}
 					if (applicantTrackingExpectedValue.equalsIgnoreCase("yes")) {
 						driver.findElement(applicationTrackingChkBox).click();
 						boolean result = driver.findElement(applicantTracking).getText()
 								.equalsIgnoreCase("$" + applicantTrackingExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + applicantTrackingExpectedValue
-								+ " but actual is " + driver.findElement(applicantTracking).getText()
-										.equalsIgnoreCase("$" + applicantTrackingExpectedValue),
-								result);
+						assertEquals(result, true);}
+					if (annualSubscriptionExpectedValue.equalsIgnoreCase("yes")) {
+						boolean result = driver.findElement(annualSubscription).getText()
+								.equalsIgnoreCase("$" + annualSubscriptionExpectedValue);
+						assertEquals(result, true);}
+				} else if (noOfEmployeesValue.equalsIgnoreCase("100")) {
+					if (performanceManagementFeature.equalsIgnoreCase("yes")) {
+						boolean result = driver.findElement(performanceManagementQuote).getText()
+								.equalsIgnoreCase("$" + performanceManagementExpectedValue);
+						assertEquals(result, true);}
+					if (successionPlanningFeature.equalsIgnoreCase("yes")) {
+						boolean result = driver.findElement(successionPlanningQuote).getText()
+								.equalsIgnoreCase("$" + successionPlanningExpectedValue);
+						assertEquals(result, true);}
+					if (employeeEngagementExpectedValue.equalsIgnoreCase("yes")) {
+						driver.findElement(employeeEngagementChkBox).click();
+						boolean result = driver.findElement(employeeEngagement).getText()
+								.equalsIgnoreCase("$" + employeeEngagementExpectedValue);
+						assertEquals(result, true);					}
+					if (applicantTrackingExpectedValue.equalsIgnoreCase("yes")) {
+						driver.findElement(applicationTrackingChkBox).click();
+						boolean result = driver.findElement(applicantTracking).getText()
+								.equalsIgnoreCase("$" + applicantTrackingExpectedValue);
+						assertEquals(result, true);
 					}
 					if (annualSubscriptionExpectedValue.equalsIgnoreCase("yes")) {
 						boolean result = driver.findElement(annualSubscription).getText()
 								.equalsIgnoreCase("$" + annualSubscriptionExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + annualSubscriptionExpectedValue
-								+ " but actual is " + driver.findElement(annualSubscription).getText()
-										.equalsIgnoreCase("$" + annualSubscriptionExpectedValue),
-								result);
+						assertEquals(result, true);
 					}
 				} else if (noOfEmployeesValue.equalsIgnoreCase("500")) {
 					if (performanceManagementFeature.equalsIgnoreCase("yes")) {
 						boolean result = driver.findElement(performanceManagementQuote).getText()
 								.equalsIgnoreCase("$" + performanceManagementExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + performanceManagementExpectedValue
-								+ " but actual is " + driver.findElement(performanceManagementQuote).getText(), result);
+						assertEquals(result, true);
 					}
 					if (successionPlanningFeature.equalsIgnoreCase("yes")) {
 						boolean result = driver.findElement(successionPlanningQuote).getText()
 								.equalsIgnoreCase("$" + successionPlanningExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + successionPlanningExpectedValue
-								+ " but actual is " + driver.findElement(successionPlanningQuote).getText(), result);
+						assertEquals(result, true);
 					}
 					if (employeeEngagementExpectedValue.equalsIgnoreCase("yes")) {
 						driver.findElement(employeeEngagementChkBox).click();
 						boolean result = driver.findElement(employeeEngagement).getText()
 								.equalsIgnoreCase("$" + employeeEngagementExpectedValue);
 
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + employeeEngagementExpectedValue
-								+ " but actual is " + driver.findElement(employeeEngagement).getText(), result);
+						assertEquals(result, true);
 					}
 					if (applicantTrackingExpectedValue.equalsIgnoreCase("yes")) {
 						driver.findElement(applicationTrackingChkBox).click();
 						boolean result = driver.findElement(applicantTracking).getText()
 								.equalsIgnoreCase("$" + applicantTrackingExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + applicantTrackingExpectedValue
-								+ " but actual is " + driver.findElement(applicantTracking).getText()
-										.equalsIgnoreCase("$" + applicantTrackingExpectedValue),
-								result);
+						assertEquals(result, true);
 					}
 					if (annualSubscriptionExpectedValue.equalsIgnoreCase("yes")) {
 						boolean result = driver.findElement(annualSubscription).getText()
 								.equalsIgnoreCase("$" + annualSubscriptionExpectedValue);
-						Assert.assertTrue("For employee count " + noOfEmployeesValue
-								+ " ,PerformanceQuote expected is  " + annualSubscriptionExpectedValue
-								+ " but actual is " + driver.findElement(annualSubscription).getText()
-										.equalsIgnoreCase("$" + annualSubscriptionExpectedValue),
-								result);
+						assertEquals(result, true);
 					}
 				} else if (noOfEmployeesValue.equalsIgnoreCase("5000")) {
 
-					Assert.assertTrue("The Contact Us is not displayed", driver.findElement(contactUs).isDisplayed());
+					assertEquals(true, driver.findElement(contactUs).isDisplayed());
 				}
 
 System.out.println(driver.findElement(performanceManagementQuote).getText());
